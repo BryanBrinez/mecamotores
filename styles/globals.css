@@ -13,8 +13,7 @@
   min-height: 100vh;
   position: fixed;
   display: flex;
-  
-  padding: 120px 24px 160px 24px;
+  background-color: #778da9;
   pointer-events: none;
 }
 
@@ -74,7 +73,7 @@
 /* Tailwind Styles */
 
 .app {
-  @apply relative z-10 flex justify-center  flex-col max-w-7xl  ;
+  @apply relative z-10 flex justify-center  flex-col   ;
 }
 
 .black_btn {

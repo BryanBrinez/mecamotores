@@ -1,10 +1,18 @@
+"use client";
 import Slidebar from "@components/Slidebar";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
 export default function RootLayout({ children }) {
+  const { data } = useSession();
+  const router = useRouter();
   return (
-    <div className="flex flex-row bg-neutral-100 h-screen w-scren overflow-hidden">
+    <div className="bg-fifth-color h-[calc(100vh-66px)] overflow-hidden flex flex-row">
       <Slidebar />
-      <div className="p-4">
-      {children}
+      <div className="flex flex-col flex-1">
+        <div className="  flex-1 p-4 min-h-0 overflow-auto">
+          {children}
+        </div>
       </div>
     </div>
   );

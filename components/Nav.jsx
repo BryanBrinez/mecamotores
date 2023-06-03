@@ -3,25 +3,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
 
-
-
 export default function Nav() {
-  const {data} = useSession();
-  
+  const { data } = useSession();
+
   return (
     <>
-      <nav className="max-w-screen-xl flex flex-wrap items-center justify-between  p-4">
+      <nav className="bg-primary-color max-w-screen text-white flex flex-wrap items-center justify-between p-4">
         <Link href="/" className="flex gap-2 flex-center">
-          <p className="logo_text">Mecamotores</p>
+          <p className=" ">Mecamotores</p>
         </Link>
         <div className="sm:flex hidden">
           {data ? (
             <div className="flex gap-3 md:gap-5">
-              <p className="logo_text">{data?.user?.name}</p>
+              <p className="">{data?.user?.name}</p>
               <Link href="/" className="black_btn">
                 Button 1
               </Link>
-              <button type="button" onClick={signOut} className="outline_btn">
+              <button type="button" onClick={signOut} className="black_btn">
                 Sign Out
               </button>
             </div>
@@ -29,7 +27,7 @@ export default function Nav() {
             <>
               <Link href="/login" type="button" className="black_btn">
                 Sign in
-              </Link >
+              </Link>
             </>
           )}
         </div>
