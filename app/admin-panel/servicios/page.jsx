@@ -1,4 +1,7 @@
-import Slidebar from "@components/Slidebar";
 export default function page() {
-  return <div className="bg-teal-200">servicios</div>;
+  return (
+    <div className="flex flex-col bg-secondary-color text-white p-4 justify-center">
+      Hola
+    </div>
+  );
 }

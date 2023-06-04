@@ -1,25 +1,69 @@
 "use client";
 
 import { useState } from "react";
+
 export default function page() {
+  // client
   const [name, setName] = useState("");
+  const [cedula, setCedula] = useState("");
+  const [tel, setTel] = useState("");
+  const [email, setEmail] = useState("");
+  const [direccion, setDireccion] = useState("");
+
+  //maquina
+  const [serial, setSerial] = useState("");
+  const [tipo, setTipo] = useState("");
+  const [marca, setMarca] = useState("");
+  const [modelo, setModelo] = useState("");
+
+  //acta de recibido
+  const [tServicio, settServicio] = useState("");
+  const [fallas, setFallas] = useState("");
+  const [obsRecibido, setobsRecibido] = useState("");
+
+
   const submitHandler = async (e) => {
     e.preventDefault();
+    try {
+      const  data  = await fetch("/api/ingresoMaquina", {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          cedula,
+          tel,
+          email,
+          direccion,
+          serial,
+          tipo,
+          marca,
+          modelo,
+          tServicio,
+          fallas,
+          obsRecibido
+        }),
+      });
+
+      
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <div className="flex flex-col bg-secondary-color text-white p-4 justify-center">
-      <form className="space-y-6" onSubmit={submitHandler}>
-        <div className="flex flex-row justify-center p-2 gap-3 ">
-          <div className=" flex flex-col bg-third-color p-3 w-full">
+      <form className="space-y-6 " onSubmit={submitHandler}>
+        <div className="flex flex-row justify-center p-2 gap-3  ">
+          <div className=" flex flex-col bg-third-color p-3 w-full ">
             <div className=" flex  justify-center">
               <h2>Datos cliente</h2>
             </div>
+
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className=" text-white block text-sm font-medium leading-6 text-gray-900"
               >
-                Name
+                Nombre
               </label>
               <div className="mt-2">
                 <input
@@ -32,19 +76,77 @@ export default function page() {
                 />
               </div>
             </div>
+
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="text-white block text-sm font-medium leading-6 text-gray-900"
               >
-                Name
+                Cedula
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  id="Cedula_field"
+                  value={cedula}
+                  onChange={(e) => setCedula(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="text-white block text-sm font-medium leading-6 text-gray-900"
+              >
+                Telefono
               </label>
               <div className="mt-2">
                 <input
                   type="text"
                   id="name_field"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={tel}
+                  onChange={(e) => setTel(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="text-white block text-sm font-medium leading-6 text-gray-900"
+              >
+                Email
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  id="name_field"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="text-white block text-sm font-medium leading-6 text-gray-900"
+              >
+                Direccion
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  id="name_field"
+                  value={direccion}
+                  onChange={(e) => setDireccion(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -59,16 +161,73 @@ export default function page() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="text-white block text-sm font-medium leading-6 text-gray-900"
               >
-                Name
+                Serial
               </label>
               <div className="mt-2">
                 <input
                   type="text"
                   id="name_field"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={serial}
+                  onChange={(e) => setSerial(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="text-white block text-sm font-medium leading-6 text-gray-900"
+              >
+                Tipo
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  id="tipo_field"
+                  value={tipo}
+                  onChange={(e) => setTipo(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="text-white block text-sm font-medium leading-6 text-gray-900"
+              >
+                Marca
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  id="tipo_field"
+                  value={marca}
+                  onChange={(e) => setMarca(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="text-white block text-sm font-medium leading-6 text-gray-900"
+              >
+                Medelo
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  id="tipo_field"
+                  value={modelo}
+                  onChange={(e) => setModelo(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -85,16 +244,54 @@ export default function page() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="text-white block text-sm font-medium leading-6 text-gray-900"
               >
-                Name
+                Tipo de servicio
               </label>
               <div className="mt-2">
                 <input
                   type="text"
                   id="name_field"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={tServicio}
+                  onChange={(e) => settServicio(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="text-white block text-sm font-medium leading-6 text-gray-900"
+              >
+                Fallas
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  id="name_field"
+                  value={fallas}
+                  onChange={(e) => setFallas(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="text-white block text-sm font-medium leading-6 text-gray-900"
+              >
+                Oberservaciones al recibir
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  id="name_field"
+                  value={obsRecibido}
+                  onChange={(e) => setobsRecibido(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
