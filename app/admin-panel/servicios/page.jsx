@@ -19,11 +19,19 @@ export default function page() {
         <button className="w-32 h-10 bg-blue-500 hover:bg-blue-600 text-white">Por entregar</button>
         <button className="w-32 h-10 bg-green-500 hover:bg-green-700 text-white">Entregado</button>
       </div>
-      <div className="flex  justify-end mb-4 mt-10">
+      <div className="bg-third-color items-center rounded-md flex flex-col justify-center mt-3 mb-2 gap-2 p-2">
+        <div className=" flex">
+          <label htmlFor="inputField" className=" flex flex-row flex-shrink-0 ">Codigo</label>
+          <input type="text" id="inputField" className="block text-center w-full rounded-md border-0 py-1 px-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+             />
+          <button className="bg-indigo-600 text-white rounded-md mx-0 px-1 py-1">..</button>
+          <label htmlFor="inputField" className=" flex flex-row flex-shrink-0 ">Cantidad</label>
+          <input type="text" id="inputField" className="block text-center w-full rounded-md border-0 py-1 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+             />
         
         <button className=" w-36 h-8 mt-1 bg-indigo-600 rounded-md hover:bg-indigo-500 text-white">Agregar Repuesto</button>
-      </div>
-      <div className="relative mt-0 overflow-x-auto">
+        </div>
+      
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
