@@ -7,7 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 
-const routes = [Routes.ADMINPANEL, Routes.SERVICIOS, Routes.RECIBIRMAQUINA, Routes.REGISTERUSER, Routes.REGISTRARREPUESTO];
+const routes = [Routes.ADMINPANEL, Routes.RECIBIRMAQUINA, Routes.REGISTERUSER, Routes.REGISTRARREPUESTO];
 export default function Slidebar() {
   const pathname = usePathname();
 
