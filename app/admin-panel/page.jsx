@@ -12,11 +12,15 @@ export default function page() {
         </button>
 
         <button className="flex  justify-center items-center gap-1.5">
-          Por reparar <SiCanonical style={{ color: "yellow" }} />
+          Diagnosticado <SiCanonical style={{ color: "yellow" }} />
         </button>
 
         <button className="flex  justify-center items-center gap-1">
           Por entregar <SiCanonical style={{ color: "green" }} />
+        </button>
+
+        <button className="flex  justify-center items-center gap-1">
+          Entregados <SiCanonical style={{ color: "blue" }} />
         </button>
       </div>
       <Table />
