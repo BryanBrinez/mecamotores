@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import TablaAux from "./TablaAux";
+import ServicioMaquina from "./ServicioMaquina";
 
 export default function Table() {
   const [allMaqClient, setallMaqClient] = useState([]);
@@ -66,6 +67,7 @@ export default function Table() {
         </div>
       </div>
       <TablaAux datos={allMaqClient} />
+     
     </div>
   );
 }

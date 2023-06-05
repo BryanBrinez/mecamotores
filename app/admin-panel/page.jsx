@@ -1,4 +1,5 @@
 "use client";
+
 import Table from "@components/Table";
 import { SiCanonical } from "react-icons/si";
 
@@ -19,6 +20,7 @@ export default function page() {
         </button>
       </div>
       <Table />
+      
     </div>
   );
 }

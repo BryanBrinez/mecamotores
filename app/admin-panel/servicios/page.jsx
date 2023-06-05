@@ -1,6 +1,5 @@
 "use client";
-import Table from "@components/Table";
-import { SiCanonical } from "react-icons/si";
+
 export default function page() {
   return (
     <div className="bg-primary-color text-white p-4">
