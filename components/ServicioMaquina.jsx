@@ -1,23 +1,16 @@
-
 import { useState, useEffect } from "react";
 
 export default function ServicioMaquina({ params }) {
-  const [maquina, setMaquina] = useState("");
   const [selectedButton, setSelectedButton] = useState(params.estado);
-  const [datosIngresados, setDatosIngresados] = useState({});
-  
+  const [dataActualizada, setdataActualizada] = useState({});
   const id = params.Maquina._id;
 
-  useEffect(() => {
-    if (params) {
-      setSelectedButton(params.estado);
-    }
-  }, [params]);
-  
+  //fetching
+
   const fetchMaquina = async () => {
-    const response = await fetch(`/api/maquina/${params.Maquina._id}`);
+    const response = await fetch(`/api/service/${params._id}`);
     const data = await response.json();
-    setMaquina(data);
+    setdataActualizada(data);
   };
 
   const updateHandler = async () => {
@@ -44,13 +37,18 @@ export default function ServicioMaquina({ params }) {
     }
   };
 
-  useEffect(() => {
-    fetchMaquina();
-  }, [params.Maquina._id]);
+  //functions
 
   const handleButtonClick = (button) => {
     setSelectedButton(button);
   };
+
+  //hook useEffect
+  useEffect(() => {
+    if (params) {
+      setSelectedButton(params.estado);
+    }
+  }, [params]);
 
   useEffect(() => {
     if (selectedButton) {
@@ -132,19 +130,21 @@ export default function ServicioMaquina({ params }) {
             Agregar Repuesto
           </button>
         </div>
-        
-          <div className="justify-center items-center block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {params.Maquina.tipo}
-            </h5>
-            <p className="font-normal text-gray-700 dark:text-gray-400">
-              {params.Cliente.name}
-            </p>
-            <p className="font-normal text-gray-700 dark:text-gray-400">
-              {selectedButton}
-            </p>
-          </div>
-      
+
+        <div className="justify-center items-center block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {params.Maquina.tipo}
+          </h5>
+          <p className="font-normal text-gray-700 dark:text-gray-400">
+            {params.Cliente.name}
+          </p>
+          <p className="font-normal text-gray-700 dark:text-gray-400">
+            {dataActualizada.estado}
+          </p>
+          <p className="font-normal text-gray-700 dark:text-gray-400">
+            {dataActualizada.notaMecanico}
+          </p>
+        </div>
       </div>
       <div className="bg-third-color  rounded-md flex flex-col  mt-12 mb-2 p-4">
         <h1>Agregar Observaciones</h1>
