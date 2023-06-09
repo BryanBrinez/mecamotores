@@ -46,6 +46,10 @@ export default function Table() {
     fetchMaqClient();
   }, []);
 
+  useEffect(() => {
+    fetchMaqClient(); 
+  }, [allMaqClient]);
+
   return (
     <div className="relative overflow-x-auto">
       <div className="flex flex-col justify-center items-center gap-3">
