@@ -1,17 +1,18 @@
-import User from "@models/user";
-import Maquina from "@models/maquina";
+
+import RepuestoUsado from "@models/repuestoUsado";
 import  connectToDB  from "@utils/database";
 
 export const GET = async (request, { params }) => {
     try {
         await connectToDB()
 
-        const user = await Maquina.findOne({_id : params._id})
+       // console.log(params)
 
-        return new Response(JSON.stringify(user), { status: 200 })
+        const repUsed = await RepuestoUsado.findOne({servicio : params._id})
+
+        return new Response(JSON.stringify(repUsed), { status: 200 })
     } catch (error) {
         return new Response("Failed to fetch all prompts", { status: 500 })
     }
 } 
-
 

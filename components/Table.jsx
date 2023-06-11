@@ -46,6 +46,8 @@ export default function Table() {
     fetchMaqClient();
   }, []);
 
+ 
+
   return (
     <div className="relative overflow-x-auto">
       <div className="flex flex-col justify-center items-center gap-3">

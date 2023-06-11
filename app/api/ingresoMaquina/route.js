@@ -55,9 +55,9 @@ export const POST = async (request) => {
     const idLastMaquina = await lastMaquina[0]._id;
 
     const arra = await Maquina.find();
-    console.log(arra[0]._id);
+    //console.log(arra[0]._id);
 
-    console.log(await Servicio.findOne({ maquina: arra[0]._id }));
+    //console.log(await Servicio.findOne({ maquina: arra[0]._id }));
 
     const servicio = new Servicio({
       maquina: idLastMaquina,

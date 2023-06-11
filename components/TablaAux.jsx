@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ServicioMaquina from "@components/ServicioMaquina";
 
 export default function TablaAux({ datos }) {
   const [selectedItem, setSelectedItem] = useState(null);
-
-  console.log(selectedItem);
+  
   return (
     <>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -30,8 +29,8 @@ export default function TablaAux({ datos }) {
         {datos.map((cliente) => (
           <tbody key={cliente._id}>
             <tr
-              className="hover:bg-gray-50 dark:hover:bg-gray-600 bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-              onClick={() => setSelectedItem(cliente.Maquina._id)}
+              className="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-600 bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              onClick={() => setSelectedItem(cliente)}
             >
               <th
                 scope="row"
@@ -47,10 +46,9 @@ export default function TablaAux({ datos }) {
           </tbody>
         ))}
       </table>
-      {selectedItem &&
-      
+      {selectedItem && (
         <ServicioMaquina params={selectedItem} />
-      }
+      )}
     </>
   );
 }
