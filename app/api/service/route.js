@@ -13,10 +13,10 @@ export const PUT = async (request ) => {
       const filter = { _id: idService };
       const update = { notaMecanico: obsRecibido };
   
-      console.log(filter)
+      //console.log(filter)
   
       const newService = await Servicio.updateOne(filter,update)
-      console.log(newService)
+      //console.log(newService)
   
       return new Response(JSON.stringify({ newService }), { status: 201 });
     } catch (error) {

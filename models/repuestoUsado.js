@@ -2,8 +2,8 @@ import mongoose, { model, mongo } from "mongoose";
 
 const repuestoUsadoSchema = new mongoose.Schema(
   {
-    repuesto: mongoose.Types.ObjectId,
     servicio: mongoose.Types.ObjectId,
+    repuestos: Array,
   },
   {
     versionKey: false, // Desactivar el campo __v

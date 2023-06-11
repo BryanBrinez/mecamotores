@@ -46,9 +46,7 @@ export default function Table() {
     fetchMaqClient();
   }, []);
 
-  useEffect(() => {
-    fetchMaqClient(); 
-  }, [allMaqClient]);
+ 
 
   return (
     <div className="relative overflow-x-auto">

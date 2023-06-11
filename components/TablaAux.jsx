@@ -3,12 +3,6 @@ import ServicioMaquina from "@components/ServicioMaquina";
 
 export default function TablaAux({ datos }) {
   const [selectedItem, setSelectedItem] = useState(null);
-  const [tablaDatos, setTablaDatos] = useState(datos);
-
-  useEffect(() => {
-    setTablaDatos(datos);
-  }, [datos]);
-
   
   return (
     <>
@@ -35,7 +29,7 @@ export default function TablaAux({ datos }) {
         {datos.map((cliente) => (
           <tbody key={cliente._id}>
             <tr
-              className="hover:bg-gray-50 dark:hover:bg-gray-600 bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              className="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-600 bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               onClick={() => setSelectedItem(cliente)}
             >
               <th

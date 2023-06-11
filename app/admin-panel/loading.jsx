@@ -1,7 +1,7 @@
 export default function loading() {
   return (
-    <div className=" flex justify-center items-center">
-      <div className="flex  flex-col items-center justify-center" role="status">
+    <div className="flex fixed inset-0  justify-center items-center">
+      <div className="flex flex-col items-center justify-center" role="status">
         <svg
           aria-hidden="true"
           className="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
