@@ -16,7 +16,7 @@ export const PUT = async (request) => {
     //const user = new User(data);
     //const user = await User.create( name, email, password );
     //await user.save();
-    console.log(newService)
+    //console.log(newService)
 
     return new Response(JSON.stringify({ newService }), { status: 201 });
   } catch (error) {

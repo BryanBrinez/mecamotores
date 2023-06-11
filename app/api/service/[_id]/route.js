@@ -16,3 +16,5 @@ export const GET = async (request, { params } ) => {
     return new Response("Failed to fetch all prompts", { status: 500 });
   }
 };
+
+
