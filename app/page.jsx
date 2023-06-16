@@ -1,5 +1,10 @@
+import { Routes } from "@lib/route.model";
+import Link from "next/link";
+
+
+
 export default function Home() {
   return (
-    <div>HOME</div>
+    <Link href={Routes.CLIENTE.path}>Cliente</Link>
   )
 }

@@ -103,9 +103,6 @@ export const GET = async (request) => {
         {
           $unwind: "$Cliente"
         },
-        
-       
-        
       ]
     )
 

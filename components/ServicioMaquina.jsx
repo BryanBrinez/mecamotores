@@ -144,11 +144,13 @@ export default function ServicioMaquina({ params }) {
   useEffect(() => {
     if (params) {
       setSelectedButton(params.estado);
+      fetchMaquina()
     }
   }, [params]);
 
   useEffect(() => {
     if (selectedButton) {
+      fetchMaquina()
       updateHandler();
     }
   }, [selectedButton]);

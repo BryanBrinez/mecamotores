@@ -34,6 +34,14 @@ export default function Table() {
         elemento.Maquina.marca
           .toString()
           .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase()) ||
+        elemento.Cliente.cedula
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase()) ||
+        elemento.Maquina.serial
+          .toString()
+          .toLowerCase()
           .includes(terminoBusqueda.toLowerCase())
       ) {
         return elemento;
@@ -45,8 +53,6 @@ export default function Table() {
   useEffect(() => {
     fetchMaqClient();
   }, []);
-
- 
 
   return (
     <div className="relative overflow-x-auto">
@@ -69,7 +75,6 @@ export default function Table() {
         </div>
       </div>
       <TablaAux datos={allMaqClient} />
-     
     </div>
   );
 }
