@@ -10,6 +10,7 @@ export default function ServicioMaquina({ params }) {
   const [repuestos, setRepuestos] = useState([]);
   const [selectedRepuesto, setSelectedRepuesto] = useState("");
   const [cantReps, setCantReps] = useState("");
+  const [indexSelected, setIndexSelected] = useState(null);
 
   const [arrayRepuestos, setArrayRepuestos] = useState([]);
 
@@ -140,17 +141,40 @@ export default function ServicioMaquina({ params }) {
     }
   };
 
+  const handleDeleteSelected = async (index) => {
+    try {
+      const response = await fetch(`/api/repuestos/usado/${params._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          index
+        }),
+      });
+
+      if (response.ok) {
+        fetchMaquina();
+        // console.log("se hizo")
+      } else {
+        console.log("Error al borrar un repuesto usado");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //hook useEffect
   useEffect(() => {
     if (params) {
       setSelectedButton(params.estado);
-      fetchMaquina()
+      fetchMaquina();
     }
   }, [params]);
 
   useEffect(() => {
     if (selectedButton) {
-      fetchMaquina()
+      fetchMaquina();
       updateHandler();
     }
   }, [selectedButton]);
@@ -166,7 +190,7 @@ export default function ServicioMaquina({ params }) {
     fetchArrayRepuestos();
   }, []);
 
-  //console.log(arrayRepuestos.repuestos[0])
+
 
   return (
     <div className="bg-primary-color text-white p-4">
@@ -338,13 +362,13 @@ export default function ServicioMaquina({ params }) {
                   >
                     {rep.nameRep}
                   </th>
-                  <td className="px-6 py-4">
-                  {rep.cantReps}
-                  </td>
+                  <td className="px-6 py-4">{rep.cantReps}</td>
 
                   <td className="px-6 py-4">
                     <button
-                      onClick={() => console.log("hola")}
+                      onClick={() => {
+                        handleDeleteSelected(index);
+                      }}
                       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-black-700 rounded"
                     >
                       Borrar
