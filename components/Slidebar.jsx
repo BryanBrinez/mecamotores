@@ -42,7 +42,7 @@ export default function Slidebar() {
           <span className="text-xl">
             <HiOutlineLogout />
           </span>
-          Logout
+          Cerrar sesión
         </button>
       </div>
     </div>

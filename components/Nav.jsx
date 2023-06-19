@@ -16,9 +16,9 @@ export default function Nav() {
           {data ? (
             <div className="flex gap-3 md:gap-5">
               <p className="">{data?.user?.name}</p>
-    
+
               <button type="button" onClick={signOut} className="black_btn">
-                Sign Out
+                Cerrar sesión
               </button>
             </div>
           ) : (

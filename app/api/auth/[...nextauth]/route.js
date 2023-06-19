@@ -19,13 +19,13 @@ const handler = NextAuth({
         const user = await User.findOne({ email });
 
         if (!user) {
-          throw new Error("Invalid Email or Password");
+          throw new Error(" Contraseña o Email incorrecto");
         }
 
         const isPasswordMatched = await bcrypt.compare(password, user.password);
 
         if (!isPasswordMatched) {
-          throw new Error("Invalid Email or Password");
+          throw new Error(" Contraseña o Email incorrecto");
         }
 
         return user;
