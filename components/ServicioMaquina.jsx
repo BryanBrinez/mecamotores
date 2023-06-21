@@ -1,7 +1,5 @@
 import { useState, useEffect, use } from "react";
 
-import PruebaModal from "./PruebaModal";
-
 export default function ServicioMaquina({ params }) {
   const [selectedButton, setSelectedButton] = useState(params.estado);
   const [dataActualizada, setdataActualizada] = useState({});
@@ -10,7 +8,8 @@ export default function ServicioMaquina({ params }) {
   const [repuestos, setRepuestos] = useState([]);
   const [selectedRepuesto, setSelectedRepuesto] = useState("");
   const [cantReps, setCantReps] = useState("");
-  const [indexSelected, setIndexSelected] = useState(null);
+  const [manoDeObra, setManoDeObra] = useState(0);
+  
 
   const [arrayRepuestos, setArrayRepuestos] = useState([]);
 
@@ -92,6 +91,32 @@ export default function ServicioMaquina({ params }) {
         body: JSON.stringify({
           idService,
           obsRecibido,
+        }),
+      });
+
+      if (response.ok) {
+        // Actualizar la tabla y la tarjeta después de la respuesta del servidor
+        fetchMaquina();
+      } else {
+        console.log("Error al actualizar la observacion");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  const submitManoDeObra = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`/api/service/obsNote`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          idService,
+          manoDeObra,
         }),
       });
 
@@ -408,7 +433,40 @@ export default function ServicioMaquina({ params }) {
             type="submit"
             className="w-1/2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Agregar
+            Agregar las observaciones
+          </button> 
+        </div>
+      </form>
+
+      <form
+        className="bg-third-color  rounded-md flex flex-col  mt-12 mb-2 p-4 "
+        onSubmit={submitManoDeObra}
+      >
+        <div className="flex flex-col justify-center p-2 gap-3  ">
+          <div>
+            <label
+              htmlFor="email"
+              className="text-white block text-sm font-medium leading-6 text-gray-900"
+            >
+              Señor mecanico, ingrese la mano de obra a cobrar
+            </label>
+            <div className="mt-2">
+              <input
+                type="number"
+                id="name_field"
+                value={manoDeObra}
+                onChange={(e) => setManoDeObra(e.target.value)}
+                required
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            className="w-1/2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Agregar mano de obra
           </button>
         </div>
       </form>

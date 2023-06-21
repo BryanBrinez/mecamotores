@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function User() {
   const [cedula, setCedula] = useState("");
   const [info, setInfo] = useState("");
- 
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -13,9 +15,21 @@ export default function User() {
   };
 
   const fetchInfo = async () => {
-    const response = await fetch(`/api/users/${cedula}`);
-    const data = await response.json();
-    setInfo(data);
+    try {
+      const response = await fetch(`/api/users/${cedula}`);
+      const data = await response.json();
+      setInfo(data);
+      if (data.error) {
+        setError(data.error);
+        console.log(data.error) 
+      } else {
+        router.push(`/client-info/${cedula}`);
+        //console.log("inicio el cliente") 
+      }
+    } catch (error) { 
+      //console.log(error.stack);   
+      setError("Cliente no encontrado");
+    }
   };
 
   //console.log(info)
@@ -48,7 +62,21 @@ export default function User() {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
+
+              
             </div>
+            {error && (
+                <div
+                  className="flex justify-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                  role="alert"
+                >
+                  <p className="text-red-500 text-sm font-medium"></p>
+                  <strong className="font-bold">{error}</strong>
+                  <span className="block sm:inline"></span>
+                  
+                </div>
+                
+              )}
 
             <div>
               <button

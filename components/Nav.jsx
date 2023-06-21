@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
+import { CgProfile } from "react-icons/cg";
 
 export default function Nav() {
   const { data } = useSession();
@@ -14,17 +15,18 @@ export default function Nav() {
         </Link>
         <div className="sm:flex hidden">
           {data ? (
-            <div className="flex gap-3 md:gap-5">
+            <div className="flex gap-3  md:gap-5">
               <p className="">{data?.user?.name}</p>
+              <CgProfile className="w-8 h-8 bg-primary-color text-white"></CgProfile>
 
-              <button type="button" onClick={signOut} className="black_btn">
+             <button type="button" onClick={signOut} className="black_btn">
                 Cerrar sesión
-              </button>
+          </button>
             </div>
           ) : (
             <>
               <Link href="/login" type="button" className="black_btn">
-                Sign in
+                Iniciar sesión
               </Link>
             </>
           )}

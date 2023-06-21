@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -30,6 +29,8 @@ export default function LoginPage() {
       setError("An error occurred");
     }
   };
+
+  
 
   return (
     <section className="bg-white dark:bg-third-color">
