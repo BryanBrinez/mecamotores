@@ -19,6 +19,13 @@ export default function page() {
           password,
         }),
       });
+      if (data.ok) {
+        setPassword("")
+        setEmail("")
+        setName("")
+      } else {
+        console.log("Error al actualizar la observacion");
+      }
 
       console.log(data);
     } catch (error) {

@@ -96,6 +96,7 @@ export default function ServicioMaquina({ params }) {
 
       if (response.ok) {
         // Actualizar la tabla y la tarjeta después de la respuesta del servidor
+        setobsRecibido("")
         fetchMaquina();
       } else {
         console.log("Error al actualizar la observacion");
@@ -122,6 +123,7 @@ export default function ServicioMaquina({ params }) {
 
       if (response.ok) {
         // Actualizar la tabla y la tarjeta después de la respuesta del servidor
+        setManoDeObra("")
         fetchMaquina();
       } else {
         console.log("Error al actualizar la observacion");

@@ -66,7 +66,7 @@ export default function page({ params }) {
                   </div>
                   <div>
                     <strong>Telefono:</strong>{" "}
-                    {serviceWithClient?.serviceWithClient?.tel}
+                    {serviceWithClient?.Cliente?.tel}
                   </div>
                   <div>
                     <strong>Email:</strong> {serviceWithClient?.Cliente?.email}

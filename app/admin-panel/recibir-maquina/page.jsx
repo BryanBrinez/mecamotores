@@ -42,11 +42,29 @@ export default function page() {
           obsRecibido
         }),
       });
+      if (data.ok) {
+        // Actualizar la tabla y la tarjeta después de la respuesta del servidor
+        setName("")
+        setCedula("")
+        setTel("")
+        setEmail("")
+        setDireccion("")
+        setSerial("")
+        setTipo("")
+        setMarca("")
+        settServicio("")
+        setModelo("")
+        setFallas("")
+        setobsRecibido("")
+      } else {
+        console.log("Error al actualizar la observacion");
+      }
 
       
     } catch (error) {
       console.log(error);
     }
+    
   };
 
   return (
@@ -220,7 +238,7 @@ export default function page() {
                 htmlFor="email"
                 className="text-white block text-sm font-medium leading-6 text-gray-900"
               >
-                Medelo
+                Modelo
               </label>
               <div className="mt-2">
                 <input
@@ -284,7 +302,7 @@ export default function page() {
                 htmlFor="email"
                 className="text-white block text-sm font-medium leading-6 text-gray-900"
               >
-                Oberservaciones al recibir
+                Observaciones al recibir
               </label>
               <div className="mt-2">
                 <input

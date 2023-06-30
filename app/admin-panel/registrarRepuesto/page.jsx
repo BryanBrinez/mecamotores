@@ -20,6 +20,14 @@ export default function page() {
           marca,
         }),
       });
+      if (data.ok) {
+        setReferencia("")
+        setName("")
+        setPrecio("")
+        setMarca("")
+      } else {
+        console.log("Error al actualizar la observacion");
+      }
 
       console.log(data);
     } catch (error) {
