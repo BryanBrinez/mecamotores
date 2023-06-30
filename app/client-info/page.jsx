@@ -35,7 +35,8 @@ export default function User() {
   //console.log(info)
 
   return (
-    <div className="flex  flex-col min-h-full flex-col justify-center items-center px-6 py-12 lg:px-8 p-10">
+    
+    <div className=" flex  flex-col min-h-full flex-col justify-center items-center px-6 py-12 lg:px-8 p-10">
       <div className="w-full max-w-sm  bg-seconday-color border border-gray-200 rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
           <h2 className="text-white mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -90,5 +91,6 @@ export default function User() {
         </div>
       </div>
     </div>
+    
   );
 }
